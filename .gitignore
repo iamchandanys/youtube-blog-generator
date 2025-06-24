@@ -192,3 +192,10 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# UV package manager
+.uv/
+uv-env/
+uv-cache/
+uv-virtualenv/
+uv-venv/
