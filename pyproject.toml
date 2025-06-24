@@ -9,4 +9,6 @@ dependencies = [
     "fastapi>=0.115.13",
     "langchain[openai]>=0.3.26",
     "langgraph>=0.4.8",
+    "langgraph-cli[inmem]>=0.3.3",
+    "uvicorn>=0.34.3",
 ]
