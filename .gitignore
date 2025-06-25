@@ -200,4 +200,5 @@ uv-cache/
 uv-virtualenv/
 uv-venv/
 
-.langgraph_api
+.langgraph_api/
+.vscode/

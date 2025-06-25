@@ -15,15 +15,20 @@ async def generate_blog(request: Request):
     try:
         data = await request.json()
         topic = data.get("topic", "")
+        language = data.get("language", "")
         
         azLLm = AzLLM() 
         llm = azLLm.get_llm()
         
         blogGraphBuilder = BlogGraphBuilder(llm)
-        graphBuilder = blogGraphBuilder.build_topic_graph()
-        graph = graphBuilder.compile()
-        state = graph.invoke({"topic": topic})
         
+        if topic and language:
+            graphBuilder = blogGraphBuilder.get_graph_builder("topic_with_language")
+            state = graphBuilder.invoke({"topic": topic, "current_language": language})
+        else:
+            graphBuilder = blogGraphBuilder.get_graph_builder("topic")
+            state = graphBuilder.invoke({"topic": topic})
+
         return {"data": state}
     except Exception as e:
         return {"status": "error", "message": str(e)}
