@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain.chat_models import init_chat_model

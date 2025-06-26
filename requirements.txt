@@ -4,3 +4,4 @@ fastapi
 langchain[openai]
 uvicorn
 langgraph-cli[inmem]
+youtube_transcript_api
