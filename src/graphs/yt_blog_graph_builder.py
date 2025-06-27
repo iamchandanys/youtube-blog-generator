@@ -12,10 +12,14 @@ class YTBlogGraphBuilder:
     def build_yt_blog_graph(self) -> StateGraph:
         # Add nodes to the graph
         self.graph_builder.add_node("transcription", YTBlogNodeDefinitions(self.llm).get_transcription_node)
+        self.graph_builder.add_node("title_and_content", YTBlogNodeDefinitions(self.llm).get_title_and_content_node)
+        self.graph_builder.add_node("translate_title_and_content", YTBlogNodeDefinitions(self.llm).translate_title_and_content_node)
         
         # Add edges to the graph
         self.graph_builder.add_edge(START, "transcription")
-        self.graph_builder.add_edge("transcription", END)
+        self.graph_builder.add_edge("transcription", "title_and_content")
+        self.graph_builder.add_edge("title_and_content", "translate_title_and_content")
+        self.graph_builder.add_edge("translate_title_and_content", END)
         
         return self.graph_builder
 
