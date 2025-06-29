@@ -1,6 +1,12 @@
 # youtube-blog-generator
 YouTube blog generator is an AI-powered tool that automatically converts YouTube videos into well-structured, SEO-friendly blog articles using LangGraph and Large Language Models (LLMs). It supports multi-language blog generation.
 
+# Youtube blog generator
+![LangSmith Logo](images/yt_blog_generator.jpg)
+
+# Blog generator by topic
+![LangSmith Logo](images/blog_generator.jpg)
+
 ## Features
 
 - Converts YouTube videos into structured blog articles automatically
@@ -15,15 +21,16 @@ YouTube blog generator is an AI-powered tool that automatically converts YouTube
 
 - Python 3.8+
 - [pip](https://pip.pypa.io/en/stable/installation/)
-- OpenAI API key
+- Azure OpenAI API key
 - YouTube Link
+- UV package
 
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/youtube-blog-generator.git
+git clone https://github.com/iamchandanys/youtube-blog-generator.git
 cd youtube-blog-generator
-pip install -r requirements.txt
+uv add -r requirements.txt
 ```
 
 ### Usage
@@ -45,7 +52,7 @@ pip install -r requirements.txt
    Send a POST request with the following JSON body:
     ```json
     {
-      "youtube_link": "",
+      "yt_link": "",
       "language": ""
     }
     ```
@@ -53,14 +60,13 @@ pip install -r requirements.txt
     ```bash
     curl -X POST http://localhost:8000/generate-yt-blog \
       -H "Content-Type: application/json" \
-      -d '{"youtube_link": "YOUR_YOUTUBE_LINK", "language": "en"}'
+      -d '{"yt_link": "YOUR_YOUTUBE_LINK", "language": "english"}'
     ```
 
 ### Command Line Arguments
 
-- `--url`: YouTube video URL (required)
-- `--language`: Output language (required)
-- `--output`: Output file path (optional)   
+- `--yt_link`: YouTube video URL (required)
+- `--language`: Output language (required)  
 
 ## Technologies Used
 

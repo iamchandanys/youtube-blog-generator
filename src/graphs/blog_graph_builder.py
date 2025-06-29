@@ -63,9 +63,3 @@ class BlogGraphBuilder:
 llm = AzLLM().get_llm()
 blogGraphBuilder = BlogGraphBuilder(llm)
 graph = blogGraphBuilder.build_topic_with_language_graph().compile()
-
-response = graph.invoke(
-    {
-        "topic": "short note on AI",
-    }
-)

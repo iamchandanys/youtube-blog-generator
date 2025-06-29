@@ -6,7 +6,7 @@ class YTBlog(BaseModel):
     content: str = Field(description="The content of the blog post")
     
 class YTBlogState(TypedDict):
-    messages: str
+    yt_link: str
     transcript: str
     blog: YTBlog
-    current_language: str
+    language: str

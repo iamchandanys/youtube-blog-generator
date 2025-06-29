@@ -1,8 +1,7 @@
-import os
 import uvicorn
 
 from fastapi import FastAPI, Request
-# from src.graphs.blog_graph_builder import BlogGraphBuilder
+from src.graphs.blog_graph_builder import BlogGraphBuilder
 from src.graphs.yt_blog_graph_builder import YTBlogGraphBuilder
 from src.llms.az_llm import AzLLM
 from dotenv import load_dotenv
@@ -11,34 +10,35 @@ load_dotenv()
 
 app = FastAPI()
 
-# @app.post("/generate-blog")
-# async def generate_blog(request: Request):
-#     try:
-#         data = await request.json()
-#         topic = data.get("topic", "")
-#         language = data.get("language", "")
+@app.post("/generate-blog")
+async def generate_blog(request: Request):
+    try:
+        data = await request.json()
+        topic = data.get("topic", "")
+        language = data.get("language", "")
         
-#         azLLm = AzLLM() 
-#         llm = azLLm.get_llm()
+        azLLm = AzLLM() 
+        llm = azLLm.get_llm()
         
-#         blogGraphBuilder = BlogGraphBuilder(llm)
+        blogGraphBuilder = BlogGraphBuilder(llm)
         
-#         if topic and language:
-#             graphBuilder = blogGraphBuilder.get_graph_builder("topic_with_language")
-#             state = graphBuilder.invoke({"topic": topic, "current_language": language})
-#         else:
-#             graphBuilder = blogGraphBuilder.get_graph_builder("topic")
-#             state = graphBuilder.invoke({"topic": topic})
+        if topic and language:
+            graphBuilder = blogGraphBuilder.get_graph_builder("topic_with_language")
+            state = graphBuilder.invoke({"topic": topic, "current_language": language})
+        else:
+            graphBuilder = blogGraphBuilder.get_graph_builder("topic")
+            state = graphBuilder.invoke({"topic": topic})
 
-#         return {"data": state}
-#     except Exception as e:
-#         return {"status": "error", "message": str(e)}
+        return {"data": state}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
     
 @app.post("/generate-yt-blog")
 async def generate_yt_blog(request: Request):
     try:
         data = await request.json()
-        user_message = data.get("user_message", "")
+        yt_link = data.get("yt_link", "")
+        language = data.get("language", "kannada")
         
         azLLm = AzLLM() 
         llm = azLLm.get_llm()
@@ -49,7 +49,8 @@ async def generate_yt_blog(request: Request):
         
         state = graphBuilder.compile().invoke(
             {
-                "user_message": user_message,
+                "yt_link": yt_link,
+                "language": language,
             }
         )
 
