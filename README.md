@@ -1,10 +1,7 @@
-# youtube-blog-generator
-YouTube blog generator is an AI-powered tool that automatically converts YouTube videos into well-structured, SEO-friendly blog articles using LangGraph and Large Language Models (LLMs). It supports multi-language blog generation.
+**Transform YouTube videos into SEO-friendly, multi-language blog articles with AI.**
 
-# Youtube blog generator
-![LangSmith Logo](images/yt_blog_generator.jpg)
+YouTube Blog Generator is an AI-powered tool that automatically converts YouTube videos into well-structured, SEO-optimized blog posts using LangGraph and Large Language Models (LLMs). It supports multi-language blog generation.
 
-# Blog generator by topic
 ![LangSmith Logo](images/blog_generator.jpg)
 
 ## Features
